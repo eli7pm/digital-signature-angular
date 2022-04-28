@@ -1,3 +1,4 @@
+//@ts-ignore
 import * as forge from 'node-forge'
 
 export class AppSigner {
