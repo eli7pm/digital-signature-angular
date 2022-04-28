@@ -28,12 +28,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
-  "budgets": [
-    {
-      "type": "initial",
-      "maximumWarning": "5mb",
-      "maximumError": "5mb"
-    }
-  ]
+  }
 }
