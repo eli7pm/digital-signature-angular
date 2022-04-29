@@ -5,24 +5,25 @@ export class AppSigner {
   //Generating the PKCS7 file
   generatePKCS7 = async (fileContents: string): Promise<ArrayBuffer> =>{
 
-    //I'm taking the files f
+    //Just for demo purporse, I'm taking the certicate files from local storage.
     const certificatePromise = fetch(
-      "./elicert.pem"
+      "./assets/elicert.pem"
     ).then((response) => response.text());
     const privateKeyPromise = fetch(
-      "./elikey.pem"
+      "./assets/private.pem"
     ).then((response) => response.text());
     const [certificatePem, privateKeyPem] = await Promise.all([
       certificatePromise,
       privateKeyPromise,
     ]);
     const certificate = forge.pki.certificateFromPem(certificatePem);
-    const privateKey = forge.pki.privateKeyFromPem(privateKeyPem);
+    const privateKey = forge.pki.decryptRsaPrivateKey(privateKeyPem,"pikiro");
 
     const p7 = forge.pkcs7.createSignedData();
 
     p7.content = new forge.util.ByteStringBuffer(fileContents);
     p7.addCertificate(certificate);
+    console.log(p7)
     // @ts-ignore
     // @ts-ignore
     // @ts-ignore
