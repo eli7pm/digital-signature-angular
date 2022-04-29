@@ -1,7 +1,0 @@
-"assets": [
-"src/assets",	{
-	"glob": "**/*",
-	"input": "./node_modules/pspdfkit/dist/pspdfkit-lib/",
-	"output": "./assets/pspdfkit-lib/"
-}
-]
